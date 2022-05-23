@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodvery-staging-60126-authRole",
+      "UnauthRoleArn": "arn:aws:iam::443682693743:role/amplify-foodvery-staging-60126-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::443682693743:role/amplify-foodvery-staging-60126-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-foodvery-staging-60126-deployment",
+      "UnauthRoleName": "amplify-foodvery-staging-60126-unauthRole",
+      "StackName": "amplify-foodvery-staging-60126",
+      "StackId": "arn:aws:cloudformation:us-east-1:443682693743:stack/amplify-foodvery-staging-60126/f4627590-d66f-11ec-a14c-0e1c5f473ffb",
+      "AmplifyAppId": "d1otuomg9ybwh"
+    },
+    "categories": {
+      "auth": {
+        "FoodVery": {}
+      }
+    }
+  }
+}
