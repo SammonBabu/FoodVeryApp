@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import BasketDishItem from "../../components/BasketDishItem";
 import { useBasketContext } from "../../contexts/BasketContext";
-//import { useOrderContext } from "../../contexts/OrderContext";
+import { useOrderContext } from "../../contexts/OrderContext";
 import { useNavigation } from "@react-navigation/native";
 
 // import restaurants from "../../../assets/data/restaurants.json";
@@ -9,9 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 // const restaurant = restaurants[0];
 
 const Basket = () => {
-
   const { restaurant, basketDishes, totalPrice } = useBasketContext();
-  //const { createOrder } = useOrderContext();
+  const { createOrder } = useOrderContext();
   const navigation = useNavigation();
 
   const onCreateOrder = async () => {
@@ -34,9 +33,11 @@ const Basket = () => {
 
       <View style={styles.separator} />
 
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>Create order &#8226; ₹ {totalPrice.toFixed(0)}</Text>
-      </View>
+      <Pressable onPress={onCreateOrder} style={styles.button}>
+        <Text style={styles.buttonText}>
+          Create order &#8226; ₹ {totalPrice.toFixed(2)}
+        </Text>
+      </Pressable>
     </View>
   );
 };

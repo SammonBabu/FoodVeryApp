@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const OrderListItem = ({ order }) => {
   const navigation = useNavigation();
+  console.log(order);
 
   return (
     <Pressable
@@ -18,7 +19,9 @@ const OrderListItem = ({ order }) => {
         <Text style={{ fontWeight: "600", fontSize: 16 }}>
           {order.Restaurant.name}
         </Text>
-        <Text style={{ marginVertical: 5 }}>3 items &#8226; $38.45</Text>
+        <Text style={{ marginVertical: 5 }}>
+          Total Cost &#8226; ₹ {order.total.toFixed(0)}
+        </Text>
         <Text>2 days ago &#8226; {order.status} </Text>
       </View>
     </Pressable>
