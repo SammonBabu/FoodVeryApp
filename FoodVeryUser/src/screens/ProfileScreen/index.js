@@ -12,8 +12,8 @@ const Profile = () => {
   const [name, setName] = useState(dbUser?.name || "");
   const [address, setAddress] = useState(dbUser?.address || "");
   // const [lat, setLat] = useState(dbUser?.lat + "" || "");
-  const [lat, setLat] = useState(dbUser?.lat || "0");
-  const [lng, setLng] = useState(dbUser?.lng || "0");
+  const [lat, setLat] = useState(dbUser?.lat + "" || "0");
+  const [lng, setLng] = useState(dbUser?.lng + "" || "0");
 
   const { sub, setDbUser } = useAuthContext();
 
