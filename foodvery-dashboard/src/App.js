@@ -1,12 +1,15 @@
 import { Layout, Image } from "antd";
 import SideMenu from "../src/components/SideMenu";
 import AppRoutes from "./components/AppRoutes";
+import {Amplify} from 'aws-amplify';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import awsconfig from './aws-exports';
+import "@aws-amplify/ui-react/styles.css";
 
 const { Sider, Content, Footer } = Layout;
 
+Amplify.configure(awsconfig);
 
-//https://i.ibb.co/rsNxyWS/logo.png
-//https://i.ibb.co/1XQ720R/162328.png
 function App() {
   return (
     <Layout>
@@ -30,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
