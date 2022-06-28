@@ -1,5 +1,8 @@
 import { Layout, Image } from "antd";
 import SideMenu from "../src/components/SideMenu";
+import { Header } from "../src/components/SignIn/Header.js";
+import { SignInHeader } from "../src/components/SignIn/SignInHeader";
+import { SignInFooter } from "../src/components/SignIn/SignInFooter";
 import AppRoutes from "./components/AppRoutes";
 import { Amplify } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
@@ -36,4 +39,13 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {
+  components: {
+    Header,
+    SignIn: {
+      Header: SignInHeader,
+      Footer: SignInFooter,
+    },
+    Footer,
+  },
+});

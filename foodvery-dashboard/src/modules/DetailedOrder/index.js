@@ -75,9 +75,9 @@ const DetailedOrder = () => {
         renderItem={(dishItem) => (
           <List.Item>
             <div style={{ fontWeight: "bold" }}>
-              {dishItem.Dish.name} x{dishItem.quantity}
+              {dishItem?.Dish?.name} x{dishItem.quantity}
             </div>
-            <div>₹{dishItem.Dish.price}</div>
+            <div>₹{dishItem?.Dish?.price}</div>
           </List.Item>
         )}
       />
