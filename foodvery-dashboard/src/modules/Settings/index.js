@@ -47,6 +47,7 @@ const Settings = () => {
         minDeliveryTime: 15,
         maxDeliveryTime: 60,
         address: address.label,
+        rating: 0,
         lat: coordinates.lat,
         lng: coordinates.lng,
         adminSub: sub,
