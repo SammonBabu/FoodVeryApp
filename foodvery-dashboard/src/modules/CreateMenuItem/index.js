@@ -1,8 +1,9 @@
 import { Form, Input, Button, Card, InputNumber, message } from "antd";
-import { DataStore } from "aws-amplify";
+import { DataStore,Storage } from "aws-amplify";
 import { Dish } from "../../models";
 import { useRestaurantContext } from "../../contexts/RestaurantContext";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const { TextArea } = Input;
 
@@ -10,19 +11,50 @@ const CreateMenuItem = () => {
   const { restaurant } = useRestaurantContext();
   const navigation = useNavigate();
 
-  const onFinish = ({ name, description, price }) => {
+  const [img, setImg] = useState();
+  
+  // state = {fileUrl: "", file:"",fileName:""}
+  // handleChange = e => {
+  //   const file = e.target.files[0]
+  //   this.setState({
+  //     fileUrl:URL.createObjectURL(file),
+  //     file,
+  //     fileName:file.name
+  //   })
+  //   saveFile = ()=>{
+  //     Storage.put(this.state.fileName,this.state.file).then(()=>{
+  //       console.log('successfully saved file!');
+  //       this.setState({fileUrl:"",file:"",fileName:""})
+  //     }).catch(err => {
+  //       console.log('error uploading file',err);
+  //     })
+  //   }
+  // }
+
+  const onFinish = async ({ name, description, price }) => {
+   // console.log("image data",img["name"]);
+  //  const {key} = await Storage.put(img["name"], img, {
+  //     contentType: "image/png, image/jpeg",
+  //   });
+ 
+//    const imageUrl = Storage.get(img["name"], { level: 'public' })
+// .catch(err => console.log(err));
+   //console.log("image data--",imageUrl);
     DataStore.save(
       new Dish({
         name,
         description,
         price,
+        //image:key,
         restaurantID: restaurant.id,
       })
     );
     message.success("Dish is added!");
     navigation("/menu");
   };
-  const onFinishFailed = (values) => {};
+  const onFinishFailed = () => {
+    message.error("Dish is not added!");
+  };
 
   return (
     <Card title="New Menu Item" style={{ margin: 20 }}>
@@ -56,6 +88,18 @@ const CreateMenuItem = () => {
         >
           <InputNumber />
         </Form.Item>
+        {/* <Form.Item
+          label="Dish Image(jpeg/png)"
+          name="image"
+          rules={[{ required: true }]}
+          required
+        >
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={(e) => setImg(e.target.files[0])}
+          />
+        </Form.Item> */}
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit

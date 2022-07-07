@@ -12,30 +12,26 @@ import { DataStore } from "aws-amplify";
 import { Dish } from "../../models";
 import { useBasketContext } from "../../contexts/BasketContext";
 
-// import restaurants from "../../../assets/data/restaurants.json";
-
-// const dish = restaurants[0].dishes[0];
-
 const DishDetailsScreen = () => {
   const [dish, setDish] = useState(null);
   const [quantity, setQuantity] = useState(1);
+
   const navigation = useNavigation();
   const route = useRoute();
   const id = route.params?.id;
 
-  const {addDishToBasket} = useBasketContext();
+  const { addDishToBasket } = useBasketContext();
 
   useEffect(() => {
-    // DataStore.query(Restaurant).then((results) => setRestuarants(results));
     if (id) {
       DataStore.query(Dish, id).then(setDish);
     }
   }, [id]);
 
-  const onAddToBasket = async () =>{
-    await addDishToBasket(dish,quantity);
+  const onAddToBasket = async () => {
+    await addDishToBasket(dish, quantity);
     navigation.goBack();
-  }
+  };
 
   const onMinus = () => {
     if (quantity > 1) {
@@ -52,7 +48,7 @@ const DishDetailsScreen = () => {
   };
 
   if (!dish) {
-    return <ActivityIndicator color="gray" size="large" />;
+    return <ActivityIndicator size="large" color="gray" />;
   }
 
   return (
@@ -77,12 +73,9 @@ const DishDetailsScreen = () => {
         />
       </View>
 
-      <Pressable
-        onPress={onAddToBasket}
-        style={styles.button}
-      >
+      <Pressable onPress={onAddToBasket} style={styles.button}>
         <Text style={styles.buttonText}>
-          Add {quantity} to basket &#8226; ₹{getTotal()}
+          Add {quantity} to basket &#8226; ₹ {getTotal()}
         </Text>
       </Pressable>
     </View>

@@ -4,10 +4,6 @@ import { useBasketContext } from "../../contexts/BasketContext";
 import { useOrderContext } from "../../contexts/OrderContext";
 import { useNavigation } from "@react-navigation/native";
 
-// import restaurants from "../../../assets/data/restaurants.json";
-
-// const restaurant = restaurants[0];
-
 const Basket = () => {
   const { restaurant, basketDishes, totalPrice } = useBasketContext();
   const { createOrder } = useOrderContext();

@@ -9,12 +9,7 @@ import OrderDetails from "../screens/OrderDetails";
 import ProfileScreen from "../screens/ProfileScreen";
 import { useAuthContext } from "../contexts/AuthContext";
 
-import {
-  Foundation,
-  FontAwesome5,
-  MaterialIcons,
-  AntDesign,
-} from "@expo/vector-icons";
+import { Foundation, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,8 +49,7 @@ const HomeTabs = () => {
         component={OrderStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            // <MaterialIcons name="list-alt" size={24} color={color} />
-            <AntDesign name="solution1" size={24} color={color} />
+            <MaterialIcons name="list-alt" size={24} color={color} />
           ),
         }}
       />

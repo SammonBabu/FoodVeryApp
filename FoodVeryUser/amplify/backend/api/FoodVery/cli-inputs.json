@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "FoodVery",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-7af15151-9380-4267-b31f-b2695a4fcf32/amplify/backend/api/FoodVery/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-97191df7-4bf7-42d8-97bf-d5677b749897/amplify/backend/api/FoodVery/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

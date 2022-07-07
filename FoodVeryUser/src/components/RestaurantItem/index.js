@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-DEFAULT_IMAGE =
-  "https://im1.dineout.co.in/images/uploads/misc/2017/Mar/31/empty-resto.jpg";
+const DEFAULT_IMAGE =
+  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg";
 
 const RestaurantItem = ({ restaurant }) => {
   const navigation = useNavigation();
@@ -25,8 +25,8 @@ const RestaurantItem = ({ restaurant }) => {
         <View>
           <Text style={styles.title}>{restaurant.name}</Text>
           <Text style={styles.subtitle}>
-          ₹ {restaurant.deliveryFee.toFixed(0)} &#8226; {restaurant.minDeliveryTime}-
-            {restaurant.maxDeliveryTime} minutes
+            ₹ {restaurant.deliveryFee.toFixed(1)} &#8226;{" "}
+            {restaurant.minDeliveryTime}-{restaurant.maxDeliveryTime} minutes
           </Text>
         </View>
 

@@ -17,7 +17,6 @@ const BasketContextProvider = ({ children }) => {
     restaurant?.deliveryFee
   );
 
-
   useEffect(() => {
     DataStore.query(Basket, (b) =>
       b.restaurantID("eq", restaurant.id).userID("eq", dbUser.id)

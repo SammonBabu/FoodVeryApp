@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "FoodVery": {}
+      },
+      "function": {
+        "S3Triggera200a193": {
+          "deploymentBucketName": "amplify-foodvery-staging-60126-deployment",
+          "s3Key": "amplify-builds/S3Triggera200a193-794c53546c2f4d596762-build.zip"
+        }
       }
     }
   }

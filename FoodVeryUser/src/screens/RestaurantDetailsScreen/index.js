@@ -15,7 +15,6 @@ import { DataStore } from "aws-amplify";
 import { Restaurant, Dish } from "../../models";
 import { useBasketContext } from "../../contexts/BasketContext";
 
-
 const RestaurantDetailsPage = () => {
   const [restaurant, setRestaurant] = useState(null);
   const [dishes, setDishes] = useState([]);

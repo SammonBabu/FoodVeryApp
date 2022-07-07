@@ -1,0 +1,12 @@
+{
+  "resourceName": "imagesFoodVery2022",
+  "policyUUID": "2d58398f",
+  "bucketName": "foodvery5bfce67db6094fb88a7de340c6ae6066",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "triggerFunction": "S3Triggera200a193",
+  "groupAccess": {}
+}

@@ -1,0 +1,115 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodvery-staging-60126-authRole",
+      "UnauthRoleArn": "arn:aws:iam::443682693743:role/amplify-foodvery-staging-60126-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::443682693743:role/amplify-foodvery-staging-60126-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-foodvery-staging-60126-deployment",
+      "UnauthRoleName": "amplify-foodvery-staging-60126-unauthRole",
+      "StackName": "amplify-foodvery-staging-60126",
+      "StackId": "arn:aws:cloudformation:us-east-1:443682693743:stack/amplify-foodvery-staging-60126/f4627590-d66f-11ec-a14c-0e1c5f473ffb",
+      "AmplifyAppId": "d1otuomg9ybwh"
+    }
+  },
+  "auth": {
+    "FoodVery": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 6,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "output": {
+        "UserPoolId": "us-east-1_AiKsf8jak",
+        "AppClientIDWeb": "26m55fqhvl0rbk569su03mggcb",
+        "AppClientID": "5tvthiqobr3hr7peqt9nj81s0b",
+        "IdentityPoolId": "us-east-1:bba703b0-2137-4f11-b279-14c86c0ab68d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:443682693743:userpool/us-east-1_AiKsf8jak",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "FoodVery"
+      },
+      "lastPushTimeStamp": "2022-07-07T08:14:14.720Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foodvery-staging-60126-deployment/amplify-cfn-templates/auth/FoodVery-cloudformation-template.json",
+        "logicalId": "authFoodVery"
+      }
+    }
+  },
+  "api": {
+    "FoodVery": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "ops4krasgfb5remvosstvtlkbu",
+        "GraphQLAPIEndpointOutput": "https://demiydf7vnevjjfzamiumgeyma.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-exjldcxcofcwvm4p35x3355jse"
+      },
+      "lastPushTimeStamp": "2022-07-07T08:14:14.773Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foodvery-staging-60126-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiFoodVery"
+      },
+      "lastPushDirHash": "f3RXcQTp6S5PyKPGvzkpKjT8f0Y="
+    }
+  },
+  "function": {
+    "S3Triggera200a193": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:443682693743:function:S3Triggera200a193-staging",
+        "Name": "S3Triggera200a193-staging",
+        "LambdaExecutionRole": "S3Triggera200a193LambdaRolea200a193-staging"
+      },
+      "lastPushTimeStamp": "2022-07-07T08:14:14.724Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-foodvery-staging-60126-deployment/amplify-cfn-templates/function/S3Triggera200a193-cloudformation-template.json",
+        "logicalId": "functionS3Triggera200a193"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-foodvery-staging-60126-deployment",
+        "s3Key": "amplify-builds/S3Triggera200a193-794c53546c2f4d596762-build.zip"
+      }
+    }
+  },
+  "storage": {}
+}

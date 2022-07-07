@@ -5,7 +5,8 @@ export enum OrderStatus {
   COOKING = "COOKING",
   READY_FOR_PICKUP = "READY_FOR_PICKUP",
   PICKED_UP = "PICKED_UP",
-  COMPLETED = "COMPLETED"
+  COMPLETED = "COMPLETED",
+  DECLINED_BY_RESTAURANT = "DECLINED_BY_RESTAURANT"
 }
 
 
@@ -113,6 +114,7 @@ export declare class Restaurant {
   readonly lng: number;
   readonly Dishes?: (Dish | null)[] | null;
   readonly Baskets?: (Basket | null)[] | null;
+  readonly adminSub?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Restaurant, RestaurantMetaData>);
