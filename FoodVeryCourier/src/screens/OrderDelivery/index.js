@@ -9,9 +9,13 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useOrderContext } from "../../contexts/OrderContext";
 import BottomSheetDetails from "./BottomSheetDetails";
 import CustomMarker from "../../components/CustomMarker";
+import { DataStore } from "aws-amplify";
+import { Courier } from "../../models";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const OrderDelivery = () => {
   const { order, user, fetchOrder } = useOrderContext();
+  const { dbCourier } = useAuthContext();
 
   const [driverLocation, setDriverLocation] = useState(null);
   const [totalMinutes, setTotalMinutes] = useState(0);
@@ -27,6 +31,18 @@ const OrderDelivery = () => {
   useEffect(() => {
     fetchOrder(id);
   }, [id]);
+
+  useEffect(() => {
+    if (!driverLocation) {
+      return;
+    }
+    DataStore.save(
+      Courier.copyOf(dbCourier, (updated) => {
+        updated.lat = driverLocation?.latitude;
+        updated.lng = driverLocation?.longitude;
+      })
+    );
+  }, [driverLocation]);
 
   useEffect(() => {
     (async () => {
@@ -58,14 +74,14 @@ const OrderDelivery = () => {
     return foregroundSubscription;
   }, []);
 
-  const zoomInOnDriver = () =>{
-     mapRef.current.animateToRegion({
-       latitude: driverLocation.latitude,
-       longitude: driverLocation.longitude,
-       latitudeDelta: 0.01,
-       longitudeDelta: 0.01,
-     });
-  }
+  const zoomInOnDriver = () => {
+    mapRef.current.animateToRegion({
+      latitude: driverLocation.latitude,
+      longitude: driverLocation.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+  };
   const restaurantLocation = {
     latitude: order?.Restaurant?.lat,
     longitude: order?.Restaurant?.lng,
