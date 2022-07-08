@@ -26,6 +26,7 @@ enum OrderStatus {
   PICKED_UP
   COMPLETED
   DECLINED_BY_RESTAURANT
+  ACCEPTED
 }
 
 type OrderDish @model @auth(rules: [{allow: public}]) {

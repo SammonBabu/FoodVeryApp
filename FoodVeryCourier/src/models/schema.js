@@ -897,7 +897,8 @@ export const schema = {
                 "READY_FOR_PICKUP",
                 "PICKED_UP",
                 "COMPLETED",
-                "DECLINED_BY_RESTAURANT"
+                "DECLINED_BY_RESTAURANT",
+                "ACCEPTED"
             ]
         }
     },

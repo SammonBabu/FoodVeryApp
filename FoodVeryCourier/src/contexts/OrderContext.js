@@ -37,22 +37,24 @@ const OrderContextProvider = ({ children }) => {
     ).then(setOrder);
   };
 
-  const pickUpOrder = () => {
+  const pickUpOrder = async () => {
     // update the order, and change status, and assign the courier
-    DataStore.save(
+    const updatedOrder = await DataStore.save(
       Order.copyOf(order, (updated) => {
         updated.status = "PICKED_UP";
       })
-    ).then(setOrder);
+    );
+    setOrder(updatedOrder)
   };
 
-  const completeOrder = () => {
+  const completeOrder = async () => {
     // update the order, and change status, and assign the courier
-    DataStore.save(
+    const updatedOrder = await DataStore.save(
       Order.copyOf(order, (updated) => {
         updated.status = "COMPLETED";
       })
-    ).then(setOrder);
+    );
+    setOrder(updatedOrder);
   };
 
   return (
