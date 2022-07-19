@@ -11,7 +11,7 @@ const Basket = () => {
 
   const onCreateOrder = async () => {
     const newOrder = await createOrder();
-    navigation.navigate("OrdersTab", {
+    navigation.navigate("History", {
       screen: "Order",
       params: { id: newOrder.id },
     });

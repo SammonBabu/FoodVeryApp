@@ -24,11 +24,5 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         }
-    },
-    "storage": {
-        "imagesFoodVery2022": {
-            "BucketName": "string",
-            "Region": "string"
-        }
     }
 }

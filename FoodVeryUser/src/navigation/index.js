@@ -46,7 +46,7 @@ const HomeTabs = () => {
         }}
       />
       <Tab.Screen
-        name="OrdersTab"
+        name="History"
         component={OrderStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
