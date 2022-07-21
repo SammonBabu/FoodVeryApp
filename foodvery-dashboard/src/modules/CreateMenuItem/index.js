@@ -1,9 +1,9 @@
 import { Form, Input, Button, Card, InputNumber, message } from "antd";
-import { DataStore,Storage } from "aws-amplify";
+import { DataStore } from "aws-amplify";
 import { Dish } from "../../models";
 import { useRestaurantContext } from "../../contexts/RestaurantContext";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+//import { useState } from "react";
 
 const { TextArea } = Input;
 
@@ -11,8 +11,8 @@ const CreateMenuItem = () => {
   const { restaurant } = useRestaurantContext();
   const navigation = useNavigate();
 
-  const [img, setImg] = useState();
-  
+  //const [img, setImg] = useState();
+
   // state = {fileUrl: "", file:"",fileName:""}
   // handleChange = e => {
   //   const file = e.target.files[0]
@@ -32,14 +32,14 @@ const CreateMenuItem = () => {
   // }
 
   const onFinish = async ({ name, description, price }) => {
-   // console.log("image data",img["name"]);
-  //  const {key} = await Storage.put(img["name"], img, {
-  //     contentType: "image/png, image/jpeg",
-  //   });
- 
-//    const imageUrl = Storage.get(img["name"], { level: 'public' })
-// .catch(err => console.log(err));
-   //console.log("image data--",imageUrl);
+    // console.log("image data",img["name"]);
+    //  const {key} = await Storage.put(img["name"], img, {
+    //     contentType: "image/png, image/jpeg",
+    //   });
+
+    //    const imageUrl = Storage.get(img["name"], { level: 'public' })
+    // .catch(err => console.log(err));
+    //console.log("image data--",imageUrl);
     DataStore.save(
       new Dish({
         name,

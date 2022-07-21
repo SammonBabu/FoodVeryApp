@@ -37,7 +37,7 @@ const Orders = () => {
       }
     });
     return () => subscription.unsubscribe();
-  }, []);
+  }, [restaurant]);
 
   const renderOrderStatus = (orderStatus) => {
     const statusToColor = {
