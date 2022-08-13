@@ -3185,9 +3185,15 @@
     "fastq" "^1.6.0"
 
 "@react-native-async-storage/async-storage@~1.15.0":
+<<<<<<< HEAD
   "integrity" "sha512-NQCFs47aFEch9kya/bqwdpvSdZaVRtzU7YB02L8VrmLSLpKgQH/1VwzFUBPcc1/JI1s3GU4yOLVrEbwxq+Fqcw=="
   "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.15.17.tgz"
   "version" "1.15.17"
+=======
+  version "1.15.17"
+  resolved "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.15.17.tgz"
+  integrity sha512-NQCFs47aFEch9kya/bqwdpvSdZaVRtzU7YB02L8VrmLSLpKgQH/1VwzFUBPcc1/JI1s3GU4yOLVrEbwxq+Fqcw==
+>>>>>>> d0322a0641691a98efa00ac54ce5b9aa7072cd85
   dependencies:
     "merge-options" "^3.0.4"
 
@@ -3316,6 +3322,7 @@
     "wcwidth" "^1.0.1"
 
 "@react-native-community/netinfo@7.1.3":
+<<<<<<< HEAD
   "integrity" "sha512-E8q3yuges6NYhrXBDQdzwCnG0bBQXATRjs6fpTjRJ37nURmdpe4HLq1awvooG4ymGTpZhrx4elcs/aUM7PTgrA=="
   "resolved" "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-7.1.3.tgz"
   "version" "7.1.3"
@@ -3324,6 +3331,16 @@
   "integrity" "sha512-EC7yv22QLHlTfnbC1ez9IUdXTOh1W31x96Oir0PfskSGFFJMWWdLTg4VrcE2DsGLzbfjjkBk123c173vf2a5MQ=="
   "resolved" "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.2.1.tgz"
   "version" "2.2.1"
+=======
+  version "7.1.3"
+  resolved "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-7.1.3.tgz"
+  integrity sha512-E8q3yuges6NYhrXBDQdzwCnG0bBQXATRjs6fpTjRJ37nURmdpe4HLq1awvooG4ymGTpZhrx4elcs/aUM7PTgrA==
+
+"@react-native-picker/picker@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.2.1.tgz"
+  integrity sha512-EC7yv22QLHlTfnbC1ez9IUdXTOh1W31x96Oir0PfskSGFFJMWWdLTg4VrcE2DsGLzbfjjkBk123c173vf2a5MQ==
+>>>>>>> d0322a0641691a98efa00ac54ce5b9aa7072cd85
 
 "@react-native/assets@1.0.0":
   "integrity" "sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ=="
