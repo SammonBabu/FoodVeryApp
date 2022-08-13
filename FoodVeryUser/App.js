@@ -8,6 +8,7 @@ import config from "./src/aws-exports";
 import AuthContextProvider from "./src/contexts/AuthContext";
 import BasketContextProvider from "./src/contexts/BasketContext";
 import OrderContextProvider from "./src/contexts/OrderContext";
+import { StripeProvider } from "@stripe/stripe-react-native";
 
 Amplify.configure({
   ...config,
@@ -19,14 +20,15 @@ Amplify.configure({
 function App() {
   return (
     <NavigationContainer>
-      <AuthContextProvider>
-        <BasketContextProvider>
-          <OrderContextProvider>
-            <RootNavigator />
-          </OrderContextProvider>
-        </BasketContextProvider>
-      </AuthContextProvider>
-
+      <StripeProvider publishableKey="pk_test_51LNfmKSEv7JCodBkz9Ppyp5dW973XwbCkI1LL2tXjptubAqy1YAHeN2GFGSdoR8GavnQwcmGsxTC8y4kfrbyIz9q00cQGOlsZZ">
+        <AuthContextProvider>
+          <BasketContextProvider>
+            <OrderContextProvider>
+              <RootNavigator />
+            </OrderContextProvider>
+          </BasketContextProvider>
+        </AuthContextProvider>
+      </StripeProvider>
       <StatusBar style="light" />
     </NavigationContainer>
   );
