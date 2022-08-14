@@ -9,8 +9,11 @@ import OrderDetails from "../screens/OrderDetails";
 import ProfileScreen from "../screens/ProfileScreen";
 import { useAuthContext } from "../contexts/AuthContext";
 
-import { Foundation, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+//import { Foundation, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import OrderDetailsNavigator from "./OrderDetailsNavigator";
+import GlobalStyles from "../../GlobalStyles";
+import { SafeAreaView, TouchableOpacity, View, Text } from "react-native";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,13 +21,15 @@ const RootNavigator = () => {
   const { dbUser } = useAuthContext();
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {dbUser ? (
-        <Stack.Screen name="HomeTabs" component={HomeTabs} />
-      ) : (
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      )}
-    </Stack.Navigator>
+    <SafeAreaView style={GlobalStyles.droidSafeArea}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {dbUser ? (
+          <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        ) : (
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+        )}
+      </Stack.Navigator>
+    </SafeAreaView>
   );
 };
 
@@ -41,25 +46,25 @@ const HomeTabs = () => {
         component={HomeStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Foundation name="home" size={24} color={color} />
+            <Icon icon="home" size={24} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="History"
+        name="Orders"
         component={OrderStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="list-alt" size={24} color={color} />
+            <Icon icon="receipt" size={24} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="Account"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="user-alt" size={24} color={color} />
+            <Icon icon="user" size={24} color={color} />
           ),
         }}
       />
@@ -72,7 +77,11 @@ const HomeStack = createNativeStackNavigator();
 const HomeStackNavigator = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Restaurants" component={HomeScreen} />
+      <HomeStack.Screen
+        name="Restaurants"
+        options={{ headerShown: false }}
+        component={HomeScreen}
+      />
       <HomeStack.Screen
         name="Restaurant"
         component={RestaurantDetailsScreen}
@@ -100,3 +109,17 @@ const OrderStackNavigator = () => {
 };
 
 export default RootNavigator;
+
+const Icon = (props) => (
+  <TouchableOpacity>
+    <View>
+      <FontAwesome5
+        name={props.icon}
+        size={props.size}
+        style={{
+          color: props.color,
+        }}
+      />
+    </View>
+  </TouchableOpacity>
+);
