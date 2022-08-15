@@ -6,6 +6,7 @@ import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 import { useOrderContext } from "../../contexts/OrderContext";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 const order = orders[0];
 
@@ -17,7 +18,10 @@ const OrderDetailsHeader = ({ order }) => {
 
         <View style={styles.container}>
           <Text style={styles.title}>{order.Restaurant.name}</Text>
-          <Text style={styles.subtitle}>{order.status} &#8226; 2 days ago</Text>
+          <Text style={styles.subtitle}>
+            {order.status} &#8226; Order made{" "}
+            {moment.utc(order?.createdAt).local().startOf("seconds").fromNow()}
+          </Text>
 
           <Text style={styles.menuTitle}>Your orders</Text>
         </View>
@@ -26,10 +30,9 @@ const OrderDetailsHeader = ({ order }) => {
   );
 };
 
-const OrderDetails = ({id}) => {
+const OrderDetails = ({ id }) => {
   const [order, setOrder] = useState();
   const { getOrder } = useOrderContext();
- 
 
   useEffect(() => {
     getOrder(id).then(setOrder);
