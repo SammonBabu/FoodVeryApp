@@ -46,7 +46,7 @@ const HomeTabs = () => {
         component={HomeStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Icon icon="home" size={24} color={color} />
+            <FontAwesome5 name="home" size={24} color={color} />
           ),
         }}
       />
@@ -55,7 +55,7 @@ const HomeTabs = () => {
         component={OrderStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Icon icon="receipt" size={24} color={color} />
+            <FontAwesome5 name="receipt" size={24} color={color} />
           ),
         }}
       />
@@ -64,7 +64,7 @@ const HomeTabs = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <Icon icon="user" size={24} color={color} />
+            <FontAwesome5 name="user" size={24} color={color} />
           ),
         }}
       />
@@ -110,16 +110,4 @@ const OrderStackNavigator = () => {
 
 export default RootNavigator;
 
-const Icon = (props) => (
-  <TouchableOpacity>
-    <View>
-      <FontAwesome5
-        name={props.icon}
-        size={props.size}
-        style={{
-          color: props.color,
-        }}
-      />
-    </View>
-  </TouchableOpacity>
-);
+

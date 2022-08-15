@@ -54,7 +54,7 @@ const Basket = () => {
 
   const initializePaymentSheet = async () => {
     if (!resClientSecret) {
-      return;
+      return <ActivityIndicator size={"large"} color="gray" />;
     }
     const msg = await initPaymentSheet({
       paymentIntentClientSecret: resClientSecret,
@@ -69,7 +69,7 @@ const Basket = () => {
 
   const openPaymentSheet = async () => {
     if (!resClientSecret) {
-      return;
+      return <ActivityIndicator size={"large"} color="gray" />;
     }
     const { error } = await presentPaymentSheet({ resClientSecret });
     if (error) {
@@ -92,7 +92,7 @@ const Basket = () => {
       console.log("ActivityIndicator");
       return <ActivityIndicator size={"large"} color="gray" />;
     }
-    navigation.navigate("History", {
+    navigation.navigate("Orders", {
       screen: "Order",
       params: { id: newOrder.id },
     });

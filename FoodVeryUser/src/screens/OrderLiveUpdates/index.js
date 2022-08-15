@@ -5,6 +5,7 @@ import { Courier, Order } from "../../models";
 import { DataStore } from "aws-amplify";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useRef } from "react";
+import { Badge, Button } from "@rneui/themed";
 
 const OrderLiveUpdates = ({ id }) => {
   const [order, setOrder] = useState(null);
@@ -36,13 +37,11 @@ const OrderLiveUpdates = ({ id }) => {
     if (!order) {
       return;
     }
-    const subscription = DataStore.observe(Order, order.id).subscribe(
-      (msg) => {
-        if (msg.opType === "UPDATE") {
-          setOrder(msg.element);
-        }
+    const subscription = DataStore.observe(Order, order.id).subscribe((msg) => {
+      if (msg.opType === "UPDATE") {
+        setOrder(msg.element);
       }
-    );
+    });
     return () => subscription.unsubscribe();
   }, [order]);
 
@@ -58,11 +57,34 @@ const OrderLiveUpdates = ({ id }) => {
       }
     );
     return () => subscription.unsubscribe();
-  },[courier]);
+  }, [courier]);
+
+  let statusToColor;
+  if (order?.status === "DECLINED_BY_RESTAURANT") {
+    statusToColor = "rgba(214, 61, 57, 1)";
+  } else if (
+    order?.status === "ACCEPTED" ||
+    order?.status === "PICKED_UP" ||
+    order?.status === "READY_FOR_PICKUP" ||
+    order?.status === "COOKING"
+  ) {
+    statusToColor = "rgba(255, 193, 7, 1)";
+  } else {
+    statusToColor = "rgba(127, 220, 103, 1)";
+  }
+  
 
   return (
     <View>
-      <Text>Status: {order?.status || "loading"}</Text>
+      <Button
+        title={order?.status || "loading"}
+        buttonStyle={{ backgroundColor: statusToColor }}
+        containerStyle={{
+          width: "100%",
+          margin: 5,
+        }}
+        titleStyle={{ color: "white", marginHorizontal: 20 }}
+      />
       <MapView style={styles.map} ref={mapRef} showsUserLocation>
         {courier?.lat && (
           <Marker
