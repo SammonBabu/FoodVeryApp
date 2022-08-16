@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-const Searchbar = ({ setRegion, region, cityHandler }) => {
+const Searchbar = ({ setRegion, region }) => {
   // console.log(localRestaurants);
   return (
     <View style={{ marginTop: 15, flexDirection: "row" }}>
@@ -19,9 +19,7 @@ const Searchbar = ({ setRegion, region, cityHandler }) => {
           rankby: "distance",
         }}
         onPress={(data, details = null) => {
-          //console.log(data, details);
           const city = data.description.split(",")[0];
-          cityHandler(city);
           setRegion({
             latitude: details.geometry.location.lat,
             longitude: details.geometry.location.lng,

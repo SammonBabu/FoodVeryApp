@@ -5,6 +5,8 @@ import { Auth, DataStore } from "aws-amplify";
 import { User } from "../../models";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import Searchbar from "../../components/SearchbarItem";
+import * as Location from "expo-location";
 
 const Profile = () => {
   const { dbUser } = useAuthContext();
@@ -13,6 +15,7 @@ const Profile = () => {
   const [address, setAddress] = useState(dbUser?.address || "");
   const [lat, setLat] = useState(dbUser?.lat + "" || "0");
   const [lng, setLng] = useState(dbUser?.lng + "" || "0");
+  const [useEffectRun, setUseEffectRun] = useState(false);
 
   const { sub, setDbUser } = useAuthContext();
 
@@ -56,6 +59,22 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (!status === "granted") {
+        console.log("Nonono");
+        return;
+      }
+      if (!useEffectRun) {
+        let location = await Location.getCurrentPositionAsync();
+        setLat(location.coords.latitude);
+        setLng(location.coords.longitude);
+        setUseEffectRun(false);
+      }
+    })();
+  }, []);
+  console.log(lat, lng);
   return (
     <SafeAreaView>
       <Text style={styles.title}>Profile</Text>
@@ -71,7 +90,7 @@ const Profile = () => {
         placeholder="Address"
         style={styles.input}
       />
-      <TextInput
+      {/* <TextInput
         value={lat}
         onChangeText={setLat}
         placeholder="Latitude"
@@ -84,7 +103,7 @@ const Profile = () => {
         placeholder="Longitude"
         style={styles.input}
         keyboardType="numeric"
-      />
+      /> */}
       <Button onPress={onSave} title="Save" />
       <Text
         onPress={() => Auth.signOut()}
@@ -95,6 +114,8 @@ const Profile = () => {
     </SafeAreaView>
   );
 };
+
+export default Profile;
 
 const styles = StyleSheet.create({
   title: {
@@ -110,5 +131,3 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-
-export default Profile;
